@@ -2,6 +2,10 @@
 
 A B.Tech mini project from 2010–2011 that implements an infrared TV-remote controlled two-wheel rover with onboard obstacle detection using an ATmega328P microcontroller, TSOP1738 IR receiver, L293D motor driver, and IR proximity sensors.
 
+<p align="center">
+  <img src="image/Concept%20Sketch.png" alt="Concept Sketch" width="700">
+</p>
+
 ## Overview
 
 This project was developed as part of the Bachelor of Technology program in Electronics & Communication Engineering at the Federal Institute of Science and Technology (FISAT), affiliated with Mahatma Gandhi University. The rover can be driven using a standard TV remote, while onboard obstacle sensors help prevent collisions by disabling unsafe movement directions when an obstruction is detected.
@@ -56,7 +60,7 @@ The implementation also handles repeat codes in the NEC infrared protocol, allow
 ### Block Diagram
 
 <p align="center">
-  <img src="image/BLOCK%20DIAGRAM.jpg" alt="Block Diagram" width="700">
+  <img src="image/BLOCK%20DIAGRAM.jpg" alt="Block Diagram" width="300">
 </p>
 
 ### Circuit Diagram
