@@ -19,12 +19,7 @@ This project was developed as part of the Bachelor of Technology program in Elec
 
 ## Project Objective
 
-The goal of this project was to build a small rover that could:
-
-- Receive and decode IR commands from a TV remote using a TSOP module.
-- Translate those commands into motor movements through a microcontroller and H-bridge driver.
-- Detect nearby obstacles using IR LED and photodiode-based proximity sensors.
-- Prevent collisions by disabling movement in blocked directions.
+The goal of this project was to design and build a small embedded rover that combines remote operation with basic collision avoidance. Instead of acting as a simple remote-control vehicle, the rover adds a layer of safety by sensing obstacles in its path and preventing motion commands that would lead to impact.
 
 ## Features
 
@@ -49,11 +44,11 @@ The goal of this project was to build a small rover that could:
 
 ## How It Works
 
-The rover receives coded infrared signals from a standard TV remote through the TSOP1738 receiver module. These signals are decoded by the ATmega328P, which maps specific remote buttons to movement commands and drives the motors through the L293D H-bridge.
+The rover receives coded infrared signals from a standard TV remote through the TSOP1738 receiver module. The ATmega328P decodes the received signals, identifies the pressed key, and generates the corresponding control signals for moving the rover. The rover has two geared DC motors which are controlled by L293D motor driver.
 
-The rover also carries three obstacle sensors placed at the front and sides, built using IR LEDs and photodiodes. When an obstacle reflects IR light back to a sensor, the microcontroller detects the increase and disables the corresponding movement command to avoid collisions.
+The rover also carries three IR-based proximity sensors built using matched pairs of IR LEDs and photodiodes. These are placed at the front and sides for obstacle detection. The controller reads ambient conditions from these sensors at startup. When an obstacle reflects IR light back to a sensor, the microcontroller detects the increase in values from ambient reading and senses the obstacle. The controller then disables movement in that particular direction to avoid collisions even when commands are sent.
 
-The implementation also handles repeat codes in the NEC infrared protocol, allowing continuous motion while a button remains pressed instead of requiring repeated taps.
+The implementation also handles repeat frames in the NEC infrared protocol, allowing continuous motion while a button remains pressed instead of requiring repeated taps.
 
 ## System Design
 
@@ -69,30 +64,21 @@ The implementation also handles repeat codes in the NEC infrared protocol, allow
   <img src="image/CIRCUIT%20DIAGRAM.png" alt="Circuit Diagram" width="700">
 </p>
 
-## Software
-
-The project was developed using the Arduino environment available at the time, with code written in Arduino/Wiring-style C/C++. The IR receiver logic was implemented using the IRremote library, and the rover control logic was written around manual movement, sensor checks, and mode/power control.
-
-### Software Flowchart
+## Software and Logic
 
 <p align="center">
   <img src="image/Flowchart.png" alt="Software Flowchart" width="500">
 </p>
 
-## Code Summary
+The code was developed in the Arduino environment using Wiring-style C/C++. The program follows a simple sense–decode–drive loop. It first reads the three obstacle sensors, updates blocking flags for forward, left, and right movement, and then waits for the next infrared command received from the TV remote.
 
-The Arduino sketch:
+Specific IR hex codes are mapped to actions such as forward, reverse, left, and right. The code also handles the NEC repeat frame, which allows holding the remote button down to continue the previous command and gives the rover smoother real-time control.
 
-- Reads IR commands from the TSOP receiver.
-- Maps known hex codes to directional actions.
-- Controls two DC motors through four output pins.
-- Samples analog sensor values for front, left, and right detection.
-- Prevents unsafe forward/left/right movement when an obstacle is sensed.
-- Uses NEC repeat frames to maintain continuous motion while a remote key is held.
+Motor actuation is handled through the H-bridge using four output lines from the microcontroller. If an obstacle is detected in a given direction, the corresponding motion command is suppressed. Sensor thresholds are based on ambient readings captured during startup, which helps the rover adapt to surrounding light conditions.
 
 ## Circuit and Design
 
-The circuit is centered around the ATmega328P, with a 16 MHz crystal, TSOP1738 IR module, L293D motor driver, LM7805 regulator, and three IR sensing channels. The report also includes a block diagram, full circuit diagram, PCB layout, and fabrication notes covering screen printing, etching, drilling, mounting, and soldering.
+The circuit is centered around the ATmega328P microcontroller, 16 MHz crystal, TSOP1738 IR module, L293D motor driver, LM7805 regulator, and three DIY IR based obstacle sensors. The full report includes the full circuit diagram, PCB layout, and the fabrication process used to move the design from prototype board testing to a custom PCB.
 
 ### PCB Layout and Component Layout
 
@@ -128,13 +114,15 @@ The circuit is centered around the ATmega328P, with a 16 MHz crystal, TSOP1738 I
 
 ## Results
 
-The rover was first tested on a prototype board and then migrated to a PCB after validation of the individual stages. The final system responded reliably to the remote control with an estimated operating range of about 10 meters, and the obstacle sensors supported adjustable sensitivity in the range of approximately 4 cm to 20 cm.
+The rover was first tested on Arduino prototype board and then migrated to a custom PCB after validation of the individual stages. The final system responded reliably to the remote control with an estimated operating range of about 10 meters, and the obstacle sensors supported adjustable sensitivity in the range of approximately 4 cm to 20 cm.
 
-One practical issue observed during the PCB version was increased power demand, which led to motor slowdown and the need for an external DC power source instead of batteries. Even so, the reduced speed improved obstacle detection response time and helped collision avoidance.
+One issue observed after PCB implementation was increased power demand, which caused noticeable motor slowdown and made battery operation less practical. An external DC supply was therefore used for stable operation. Interestingly, the lower speed also improved obstacle response time, making the rover more effective at collision avoidance.
 
 ## Future Scope
 
-The original project identified a future extension in which the rover could support a fully automated mode without continuous human intervention. Since the hardware already included obstacle detection, this enhancement would mainly require software changes and could be extended further using other communication methods such as Bluetooth or GSM.
+A natural extension of this project is the addition of a fully automatic operating mode in which the rover can navigate without continuous user input. Since the hardware already includes obstacle detection, this enhancement would mainly require changes in control logic.
+
+The same platform could also be adapted to other communication methods such as Bluetooth or GSM. More broadly, the project can be seen as a basic embedded robotics platform that can be expanded toward autonomous navigation and smarter vehicle control.
 
 ## Project Report
 
@@ -144,7 +132,7 @@ The original mini project report is included in this repository for reference:
 
 ## Notes
 
-This repository is being published as an archival and portfolio showcase of an undergraduate mini project completed in 2011. Some parts of the implementation, toolchain, and code style reflect the Arduino and embedded development practices of that period.
+This repository is published as a portfolio and archival record of an undergraduate mini project completed in 2011. The hardware choices, development environment, and coding style reflect the systems and tools available at that time.
 
 ## Acknowledgement
 
