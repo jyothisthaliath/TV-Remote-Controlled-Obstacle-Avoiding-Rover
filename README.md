@@ -79,25 +79,6 @@ The project was developed using the Arduino environment available at the time, w
   <img src="image/Flowchart.png" alt="Software Flowchart" width="500">
 </p>
 
-## Repository Structure
-
-```text
-tv-remote-rover/
-├── README.md
-├── LICENSE
-├── code/
-│   └── rover.ino
-├── docs/
-│   ├── Project-Report-Softcopy-Group-4-ECEB-S6.pdf
-│   ├── images/
-│   │   ├── block-diagram.png
-│   │   ├── circuit-diagram.png
-│   │   ├── flowchart.png
-│   │   └── pcb-layout.png
-└── media/
-    └── demo.mp4
-```
-
 ## Code Summary
 
 The Arduino sketch:
