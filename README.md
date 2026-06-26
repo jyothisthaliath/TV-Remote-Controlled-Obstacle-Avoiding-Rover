@@ -113,6 +113,3 @@ This repository is being published as an archival and portfolio showcase of an u
 
 This project was carried out at the Department of Electronics & Communication Engineering, Federal Institute of Science and Technology (FISAT), under the guidance and support acknowledged in the original report.
 
-## License
-
-This repository may be released under the MIT License unless any team member prefers a different license. If this project is being published jointly, it is a good idea to confirm consent from all original contributors before making the repository public.
