@@ -60,7 +60,9 @@ The implementation also handles repeat frames in the NEC infrared protocol, allo
 
 ### Circuit Diagram
 
-<p align="center" style="background-color: white;"> <img src="image/CIRCUIT%20DIAGRAM.png" alt="Circuit Diagram" width="700" style="display: block; margin: 0 auto; background-color: white;"></p>
+<p align="center" style="background-color: white;"> 
+  <img src="image/CIRCUIT%20DIAGRAM.png" alt="Circuit Diagram" width="700" style="display: block; margin: 0 auto; background-color: white">
+</p>
 
 ## Software and Logic
 
