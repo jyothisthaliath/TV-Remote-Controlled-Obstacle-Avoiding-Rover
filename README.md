@@ -60,12 +60,13 @@ The implementation also handles repeat frames in the NEC infrared protocol, allo
 
 ### Circuit Diagram
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="image/CIRCUIT%20DIAGRAM-white-bg.png">
-    <img alt="Circuit Diagram" src="image/CIRCUIT%20DIAGRAM.png" width="700">
-  </picture>
-</p>
+<table align="center" style="background-color: white;">
+  <tr>
+    <td>
+      <img src="image/CIRCUIT%20DIAGRAM.png" alt="Circuit Diagram" width="700">
+    </td>
+  </tr>
+</table>
 
 ## Software and Logic
 
