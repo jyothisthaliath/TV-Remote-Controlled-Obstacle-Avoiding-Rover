@@ -51,9 +51,29 @@ The rover also carries three obstacle sensors placed at the front and sides, bui
 
 The implementation also handles repeat codes in the NEC infrared protocol, allowing continuous motion while a button remains pressed instead of requiring repeated taps.
 
+## System Design
+
+### Block Diagram
+
+<p align="center">
+  <img src="image/BLOCK%20DIAGRAM.jpg" alt="Block Diagram" width="700">
+</p>
+
+### Circuit Diagram
+
+<p align="center">
+  <img src="image/CIRCUIT%20DIAGRAM.png" alt="Circuit Diagram" width="700">
+</p>
+
 ## Software
 
 The project was developed using the Arduino environment available at the time, with code written in Arduino/Wiring-style C/C++. The IR receiver logic was implemented using the IRremote library, and the rover control logic was written around manual movement, sensor checks, and mode/power control.
+
+### Software Flowchart
+
+<p align="center">
+  <img src="image/Flowchart.png" alt="Software Flowchart" width="500">
+</p>
 
 ## Repository Structure
 
@@ -89,6 +109,38 @@ The Arduino sketch:
 
 The circuit is centered around the ATmega328P, with a 16 MHz crystal, TSOP1738 IR module, L293D motor driver, LM7805 regulator, and three IR sensing channels. The report also includes a block diagram, full circuit diagram, PCB layout, and fabrication notes covering screen printing, etching, drilling, mounting, and soldering.
 
+### PCB Layout and Component Layout
+
+<p align="center">
+  <img src="image/PCB%20Layout%20and%20Component%20Layout.png" alt="PCB Layout and Component Layout" width="700">
+</p>
+
+## Key Components
+
+### ATmega328P
+
+<p align="center">
+  <img src="image/Pinout%20diagram%20of%20Atmel%20ATMEGA%20328P.jpg" alt="Pinout diagram of Atmel ATMEGA 328P" width="500">
+</p>
+
+### L293D Motor Driver
+
+<p align="center">
+  <img src="image/Pinout%20diagram%20of%20IC%20L293D.jpg" alt="Pinout diagram of IC L293D" width="500">
+</p>
+
+### LM7805 Voltage Regulator
+
+<p align="center">
+  <img src="image/Pinout%20diagram%20of%20LM%207805.jpg" alt="Pinout diagram of LM 7805" width="400">
+</p>
+
+### TSOP1738 IR Receiver
+
+<p align="center">
+  <img src="image/Pinout%20diagram%20of%20TSOP%201738.jpg" alt="Pinout diagram of TSOP 1738" width="450">
+</p>
+
 ## Results
 
 The rover was first tested on a prototype board and then migrated to a PCB after validation of the individual stages. The final system responded reliably to the remote control with an estimated operating range of about 10 meters, and the obstacle sensors supported adjustable sensitivity in the range of approximately 4 cm to 20 cm.
@@ -112,4 +164,3 @@ This repository is being published as an archival and portfolio showcase of an u
 ## Acknowledgement
 
 This project was carried out at the Department of Electronics & Communication Engineering, Federal Institute of Science and Technology (FISAT), under the guidance and support acknowledged in the original report.
-
