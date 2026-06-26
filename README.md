@@ -127,8 +127,8 @@ The same platform could also be adapted to other communication methods such as B
 ## Project Report
 
 The original mini project report is included in this repository for reference:
-
-`docs/Project-Report-Softcopy-Group-4-ECEB-S6.pdf`
+[`docs/Project-Report-Softcopy-Group-4-ECEB-S6.pdf`
+](https://github.com/jyothisthaliath/TV-Remote-Controlled-Obstacle-Avoiding-Rover/blob/master/docs/Project%20Report%20Softcopy%20(Group%204%2C%20ECEB%20S6).pdf)
 
 ## Notes
 
